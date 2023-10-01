@@ -1,0 +1,10 @@
+{
+  "vpc_name": "default",
+  "opensearch_domain_name": "llm-rag-vectordb",
+  "sagemaker_domain_name": "rag-workshop-studio-in-vpc",
+  "lambda_layer_lib_s3_path": "s3://lambda-layer-resources/pylambda-layer/sagemaker-python-sdk-lib.zip",
+  "sagemaker_jumpstart_model_info": {
+    "model_id": "meta-textgeneration-llama-2-7b",
+    "endpoint_name": "llama-2-7b"
+  }
+}
