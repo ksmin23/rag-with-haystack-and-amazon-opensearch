@@ -26,7 +26,7 @@ The overall architecture is like this:
 
 ### References
 
-  * [Build production-ready generative AI applications for enterprise search using Haystack pipelines and Amazon SageMaker JumpStart with LLMs 2023-0-14)](https://aws.amazon.com/blogs/machine-learning/build-production-ready-generative-ai-applications-for-enterprise-search-using-haystack-pipelines-and-amazon-sagemaker-jumpstart-with-llms/)
+  * [Build production-ready generative AI applications for enterprise search using Haystack pipelines and Amazon SageMaker JumpStart with LLMs (2023-08-14)](https://aws.amazon.com/blogs/machine-learning/build-production-ready-generative-ai-applications-for-enterprise-search-using-haystack-pipelines-and-amazon-sagemaker-jumpstart-with-llms/)
     * [Haystack Retrieval-Augmented Generative QA Pipelines with SageMaker JumpStart](https://github.com/deepset-ai/haystack-sagemaker/)
   * [Build a powerful question answering bot with Amazon SageMaker, Amazon OpenSearch Service, Streamlit, and LangChain (2023-05-25)](https://aws.amazon.com/blogs/machine-learning/build-a-powerful-question-answering-bot-with-amazon-sagemaker-amazon-opensearch-service-streamlit-and-langchain/)
   * [Use proprietary foundation models from Amazon SageMaker JumpStart in Amazon SageMaker Studio (2023-06-27)](https://aws.amazon.com/blogs/machine-learning/use-proprietary-foundation-models-from-amazon-sagemaker-jumpstart-in-amazon-sagemaker-studio/)
@@ -35,9 +35,10 @@ The overall architecture is like this:
     * [(github) Amazon Kendra Retriver Samples](https://github.com/aws-samples/amazon-kendra-langchain-extensions/tree/main/kendra_retriever_samples)
   * [Question answering using Retrieval Augmented Generation with foundation models in Amazon SageMaker JumpStart (2023-05-02)](https://aws.amazon.com/blogs/machine-learning/question-answering-using-retrieval-augmented-generation-with-foundation-models-in-amazon-sagemaker-jumpstart/)
   * [Amazon OpenSearch Service’s vector database capabilities explained](https://aws.amazon.com/blogs/big-data/amazon-opensearch-services-vector-database-capabilities-explained/)
-  * [LangChain](https://python.langchain.com/docs/get_started/introduction.html) - A framework for developing applications powered by language models.
+  * [Haystack](https://docs.haystack.deepset.ai/docs) - The open source Python framework by deepset for building custom apps with large language models (LLMs).
   * [Streamlit](https://streamlit.io/) - A faster way to build and share data apps
   * [Improve search relevance with ML in Amazon OpenSearch Service Workshop](https://catalog.workshops.aws/semantic-search/en-US) - Module 7. Retrieval Augmented Generation
   * [rag-with-amazon-kendra](https://github.com/ksmin23/rag-with-amazon-kendra) - Question Answering application with Large Language Models (LLMs) and Amazon Kendra
+  * [rag-with-amazon-opensearch](https://github.com/ksmin23/rag-with-amazon-opensearch) - Question Answering application with Large Language Models (LLMs) and Amazon OpenSearch Service
   * [rag-with-postgresql-pgvector](https://github.com/ksmin23/rag-with-postgresql-pgvector) - Question Answering application with Large Language Models (LLMs) and Amazon Aurora Postgresql
 
