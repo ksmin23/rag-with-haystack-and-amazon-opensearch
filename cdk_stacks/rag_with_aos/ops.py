@@ -30,16 +30,15 @@ class OpenSearchStack(Stack):
     opensearch_domain_name = self.node.try_get_context('opensearch_domain_name') or OPENSEARCH_DEFAULT_DOMAIN_NAME
     assert re.fullmatch(r'([a-z][a-z0-9\-]+){3,28}?', opensearch_domain_name), 'Invalid domain name'
 
-    sg_use_opensearch = aws_ec2.SecurityGroup(self, "OpenSearchClientSG",
+    sg_opensearch_client = aws_ec2.SecurityGroup(self, "OpenSearchClientSG",
       vpc=vpc,
       allow_all_outbound=True,
       description='security group for an opensearch client',
       security_group_name='client-opensearch-cluster-sg'
     )
-    cdk.Tags.of(sg_use_opensearch).add('Name', 'client-opensearch-cluster-sg')
+    cdk.Tags.of(sg_opensearch_client).add('Name', 'client-opensearch-cluster-sg')
 
-    self.ops_client_sg = sg_use_opensearch
-    # self.ops_client_sg_id = sg_use_opensearch.security_group_id
+    self.ops_client_sg = sg_opensearch_client
 
     sg_opensearch_cluster = aws_ec2.SecurityGroup(self, "OpenSearchSG",
       vpc=vpc,
@@ -51,8 +50,8 @@ class OpenSearchStack(Stack):
 
     sg_opensearch_cluster.add_ingress_rule(peer=sg_opensearch_cluster, connection=aws_ec2.Port.all_tcp(), description='opensearch-cluster-sg')
 
-    sg_opensearch_cluster.add_ingress_rule(peer=sg_use_opensearch, connection=aws_ec2.Port.tcp(443), description='client-opensearch-cluster-sg')
-    sg_opensearch_cluster.add_ingress_rule(peer=sg_use_opensearch, connection=aws_ec2.Port.tcp_range(9200, 9300), description='client-opensearch-cluster-sg')
+    sg_opensearch_cluster.add_ingress_rule(peer=sg_opensearch_client, connection=aws_ec2.Port.tcp(443), description='client-opensearch-cluster-sg')
+    sg_opensearch_cluster.add_ingress_rule(peer=sg_opensearch_client, connection=aws_ec2.Port.tcp_range(9200, 9300), description='client-opensearch-cluster-sg')
 
     master_user_secret = aws_secretsmanager.Secret(self, "OpenSearchMasterUserSecret",
       generate_secret_string=aws_secretsmanager.SecretStringGenerator(
@@ -117,7 +116,14 @@ class OpenSearchStack(Stack):
     cdk.Tags.of(opensearch_domain).add('Name', opensearch_domain_name)
     self.ops_domain_arn = opensearch_domain.domain_arn
 
-    cdk.CfnOutput(self, 'OpenSearchDomainEndpoint', value=opensearch_domain.domain_endpoint, export_name='OpenSearchDomainEndpoint')
-    cdk.CfnOutput(self, 'OpenSearchDashboardsURL', value=f"{opensearch_domain.domain_endpoint}/_dashboards/", export_name='OpenSearchDashboardsURL')
-    cdk.CfnOutput(self, 'MasterUserSecretId', value=master_user_secret.secret_name, export_name='MasterUserSecretId')
+    cdk.CfnOutput(self, 'OpenSearchDomainEndpoint', value=opensearch_domain.domain_endpoint,
+      export_name='OpenSearchDomainEndpoint')
+    cdk.CfnOutput(self, 'OpenSearchDashboardsURL', value=f"{opensearch_domain.domain_endpoint}/_dashboards/",
+      export_name='OpenSearchDashboardsURL')
+    cdk.CfnOutput(self, 'OpenSearchDomainName', value=opensearch_domain.domain_name,
+      export_name='OpenSearchDomainName')
+    cdk.CfnOutput(self, 'OpenSearchClientSecurityGroupId', value=self.ops_client_sg.security_group_id,
+      export_name='OpenSearchClientSecurityGroupId')
+    cdk.CfnOutput(self, 'MasterUserSecretId', value=master_user_secret.secret_name,
+      export_name='MasterUserSecretId')
 

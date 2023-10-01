@@ -21,7 +21,7 @@ The overall architecture is like this:
    ```
    git clone https://github.com/ksmin23/rag-with-amazon-opensearch.git
    ```
-4. Open `opensearch_indexing_pipeline` notebook and Run it. (For more information, see [here](./data_ingestion_to_vectordb/opensearch_indexing_pipeline.ipynb))
+4. Open `data_ingestion_to_opensearch` notebook and Run it. (For more information, see [here](./data_ingestion_to_vectordb/data_ingestion_to_opensearch.ipynb))
 5. Run Streamlit application. (For more information, see [here](./app/README.md))
 
 ### References

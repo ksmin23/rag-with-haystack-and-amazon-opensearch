@@ -40,7 +40,6 @@ bastion_host.add_dependency(ops_stack)
 sm_studio_stack = SageMakerStudioStack(app, 'RAGHaystackSageMakerStudioStack',
   vpc_stack.vpc,
   ops_stack.ops_client_sg.security_group_id,
-  # ops_stack.ops_client_sg_id,
   env=APP_ENV
 )
 sm_studio_stack.add_dependency(bastion_host)

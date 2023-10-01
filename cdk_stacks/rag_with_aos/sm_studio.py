@@ -159,6 +159,7 @@ class SageMakerStudioStack(Stack):
         aws_iam.ManagedPolicy.from_aws_managed_policy_name('AmazonSageMakerFullAccess'),
         aws_iam.ManagedPolicy.from_aws_managed_policy_name('AmazonSageMakerCanvasFullAccess'),
         aws_iam.ManagedPolicy.from_aws_managed_policy_name('AWSCloudFormationReadOnlyAccess'),
+        aws_iam.ManagedPolicy.from_aws_managed_policy_name('AmazonOpenSearchServiceReadOnlyAccess'),
       ]
     )
 

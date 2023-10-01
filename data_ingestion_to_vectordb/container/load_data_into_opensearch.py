@@ -5,6 +5,10 @@ import json
 import logging
 import sys
 import time
+from typing import (
+    List,
+    Tuple
+)
 
 import warnings
 warnings.filterwarnings("ignore") # avoid printing out absolute paths
@@ -85,21 +89,16 @@ def main():
     st = time.time()
     logger.info('Loading documents ...')
 
-    # first check if index exists, if it does then call the add_documents function
-    # otherwise call the from_documents function which would first create the index
-    # and then do a bulk add. Both add_documents and from_documents do a bulk add
-    # but it is important to call from_documents first so that the index is created
-    # correctly for K-NN
     http_auth = (secret['username'], secret['password'])
     OPENSEARCH_INDEX_NAME = "document"
     index_exists = check_if_index_exists(OPENSEARCH_INDEX_NAME,
                                          args.aws_region,
-                                         args.opensearch_cluster_domain,
+                                         args.opensearch_endpoint,
                                          http_auth)
 
     if index_exists:
         et = time.time()
-        logger.info(f"index={args.opensearch_index_name} does exists, not going to call add_documents")
+        logger.info(f"index={OPENSEARCH_INDEX_NAME} does exists, not going to call add_documents")
         logger.info(f'run time in seconds: {et-st:.2f}')
         logger.info("all done")
         sys.exit(0)
