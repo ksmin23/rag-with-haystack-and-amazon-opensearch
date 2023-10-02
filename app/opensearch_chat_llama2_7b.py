@@ -50,9 +50,9 @@ def _get_credentials(secret_id: str, region_name: str='us-east-1') -> str:
 
 def build_chain():
     region = os.environ["AWS_REGION"]
-    opensearch_secret = os.environ["OPENSEARCH_SECRET"]
     opensearch_domain_endpoint = os.environ["OPENSEARCH_DOMAIN_ENDPOINT"]
     text2text_model_endpoint = os.environ["TEXT2TEXT_ENDPOINT_NAME"]
+    opensearch_secret = os.environ["OPENSEARCH_SECRET"]
 
     creds = _get_credentials(opensearch_secret, region)
     opensearch_username = creds['username']
@@ -67,7 +67,6 @@ def build_chain():
 
     model_name_or_path = text2text_model_endpoint
     model_kwargs = {
-        # "aws_profile_name": None, # "default"
         "aws_region_name": "us-east-1",
         "aws_custom_attributes": {"accept_eula": "true"}
     }
@@ -123,7 +122,6 @@ if __name__ == "__main__":
         if 'source_documents' in result:
             print(bcolors.OKGREEN + 'Sources:')
             for d in result['source_documents']:
-                # print(d.metadata['source'])
                 print(d['source'])
         print(bcolors.ENDC)
         print(bcolors.OKCYAN + "Ask a question, start a New search: or CTRL-D to exit." + bcolors.ENDC)
