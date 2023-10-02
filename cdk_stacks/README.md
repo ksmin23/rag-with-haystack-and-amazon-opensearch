@@ -183,6 +183,15 @@ Enjoy!
 
     $ aws s3 cp sagemaker-python-sdk-lib.zip s3://my-bucket-for-lambda-layer-packages/pylambda-layer/
     ```
+  * [Connect using the EC2 Instance Connect CLI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html#ec2-instance-connect-connecting-ec2-cli)
+    ```
+    $ sudo pip install ec2instanceconnectcli
+    $ mssh --region us-east-1 ec2-user@i-001234a4bf70dec41EXAMPLE
+    ```
+    * Remotely access your Amazon OpenSearch Cluster using SSH tunnel from local machine
+      <pre>
+      $ mssh --region {<i>region</i>} ec2-user@{<i>bastion-ec2-instance-id</i>} -N -L 9200:vpc-{<i>opensearch-domain-name</i>}-randomidentifier.{<i>region</i>}.es.amazonaws.com:443
+      </pre>
 
 ## Troubleshooting
 
