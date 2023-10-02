@@ -199,6 +199,7 @@ class SageMakerStudioStack(Stack):
         security_group_ids=[sg_sagemaker_domain.security_group_id]
       ),
     )
+    sagemaker_studio_domain.apply_removal_policy(cdk.RemovalPolicy.DESTROY)
 
     #XXX: https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jl.html#studio-jl-set
     sagmaker_jupyerlab_arn = self.node.try_get_context('sagmaker_jupyterlab_arn')
@@ -219,6 +220,8 @@ class SageMakerStudioStack(Stack):
       user_profile_name='default-user',
       user_settings=default_user_settings
     )
+    sagemaker_user_profile.apply_removal_policy(cdk.RemovalPolicy.DESTROY)
+
 
     cdk.CfnOutput(self, 'DomainUrl', value=sagemaker_studio_domain.attr_url,
                   export_name=f'{self.stack_name}-DomainUrl')
