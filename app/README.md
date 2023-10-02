@@ -15,7 +15,7 @@ SageMaker Studio provides a convenient platform to host the Streamlit web applic
    ```
 3. In the shell, set the following environment variables with the values that are available from the CloudFormation stack output.
    ```
-   export AWS_REGION=us-east-1
+   export AWS_REGION="your-aws-account-region"
    export OPENSEARCH_SECRET="your-opensearch-secret"
    export OPENSEARCH_DOMAIN_ENDPOINT="your-opensearch-url"
    export TEXT2TEXT_ENDPOINT_NAME="your-sagemaner-endpoint-for-text-generation-model"
