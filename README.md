@@ -1,5 +1,7 @@
 # QA with LLMs and RAG (Retrieval Augmented Generation)
 
+> :heavy_exclamation_mark: This project is a updated version based on the original project, [Haystack Retrieval-Augmented Generative QA Pipelines with SageMaker JumpStart](https://github.com/deepset-ai/haystack-sagemaker/)
+
 This project is a Question Answering application with Large Language Models (LLMs) and Amazon OpenSearch Service. An application using the RAG(Retrieval Augmented Generation) approach retrieves information most relevant to the user’s request from the enterprise knowledge base or content, bundles it as context along with the user’s request as a prompt, and then sends it to the LLM to get a GenAI response.
 
 LLMs have limitations around the maximum word count for the input prompt, therefore choosing the right passages among thousands or millions of documents in the enterprise, has a direct impact on the LLM’s accuracy.
