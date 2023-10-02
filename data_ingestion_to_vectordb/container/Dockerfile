@@ -9,6 +9,7 @@ FROM 763104351884.dkr.ecr.$REGION.amazonaws.com/pytorch-inference:2.0.1-cpu-py31
 # amount of space in the image, which reduces start up time.
 RUN pip install --no-cache-dir -U pip && pip --no-cache-dir install opensearch-py==2.2.0 \
     transformers==4.32.1 \
+    farm-haystack==1.21.0 \
     farm-haystack[aws] \
     farm-haystack[preprocessing] \
     farm-haystack[opensearch] \
