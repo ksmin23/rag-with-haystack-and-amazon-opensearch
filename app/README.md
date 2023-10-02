@@ -7,7 +7,7 @@ SageMaker Studio provides a convenient platform to host the Streamlit web applic
 1. Open Studio and then open a new **System terminal**.
 2. Run the following commands on the terminal to clone the code repository for this post and install the Python packages needed by the application:
    ```
-   git clone https://github.com/ksmin23/rag-with-amazon-opensearch-and-hackstack.git
+   git clone https://github.com/ksmin23/rag-with-haystack-and-amazon-opensearch.git
    cd rag-with-opensearch/app
    python -m venv .env
    source .env/bin/activate
